@@ -6,8 +6,13 @@ public class Task_5 {
         try{
             int n = sc.nextInt();
             if (n >= 0){
-                int fact = factorial(n);
-                System.out.print("Ответ:"+fact);
+                if (n > 20){
+                    long fact = factorial(n);
+                    System.out.print("Ответ:"+fact);
+                }
+                else{
+                    System.out.print("Число слишком большое для типа long.");
+                }
             }
             else{
                 System.out.print("Факториал отрицательного числа не существует");
@@ -17,9 +22,9 @@ public class Task_5 {
         }
     }
 
-    public static int factorial(int n){
+    public static long factorial(int n){
         int i = 1;
-        int fact = 1;
+        long fact = 1;
         while (i <= n){
             fact *= i;
             i++;
