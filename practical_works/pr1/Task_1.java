@@ -7,8 +7,8 @@ public class Task_1 {
         int sum = 0;
         double average;
 
-        for (int i=0; i < l.length; i++){
-            sum += l[i];
+        for (int j : l) {
+            sum += j;
         }
         average = (double) sum / l.length;
 

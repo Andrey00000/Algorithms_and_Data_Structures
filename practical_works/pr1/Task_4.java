@@ -7,7 +7,7 @@ public class Task_4 {
         double sum = 0.0;
         for (int i = 1; i <=10;i++){
             sum += 1.0 / i;
-            System.out.printf("H(%2d) = %8.6f%n", i, sum);
+            System.out.printf("H(%2d) = %.6f%n", i, sum);
         }
     }
 }
