@@ -42,11 +42,11 @@ public class Circle {
     }
 
     public double getPerimetr(){
-        return 2 * Math.PI * this.getRadius();
+        return 2 * Math.PI * getRadius();
     }
 
     public double getArea(){
-        return Math.PI * this.getRadius() * this.getRadius();
+        return Math.PI * getRadius() * getRadius();
     }
 
     @Override
