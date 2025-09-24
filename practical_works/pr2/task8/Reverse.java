@@ -25,7 +25,9 @@ public class Reverse {
 
     public static void printArr(String[] str){
          for (String i : str){
+             if (!i.isEmpty()){
              System.out.print(i + " ");
+            }
          }
     }
 }
