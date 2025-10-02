@@ -8,13 +8,13 @@ public class Shop {
     private Product[] products;
     private Scanner sc;
 
-    public Shop(){
+    public Shop() {
         this.sc = new Scanner(System.in);
         this.cart = new Cart();
         initializeProducts();
     }
 
-    private void initializeProducts(){
+    private void initializeProducts() {
         products = new Product[8];
         products[0] = new Product(1, "Смартфон", 29999.99, CatalogProducts.ELECTRONICS, 10);
         products[1] = new Product(2, "Ноутбук", 89999.99, CatalogProducts.ELECTRONICS, 5);
@@ -26,35 +26,35 @@ public class Shop {
         products[7] = new Product(8, "Чайник", 1999.99, CatalogProducts.HOME, 18);
     }
 
-    public void start(){
+    public void start() {
         System.out.println("ДОБРО ПОЖАЛОВАТЬ В НАШ МАГАЗИН");
         client = new Client("Имя", "пароль");
-        while(!client.isLogout()){
-            if (!client.isLoggedIn()){
+        while (!client.isLogout()) {
+            if (!client.isLoggedIn()) {
                 authorization();
             }
-            if (client.isLoggedIn()){
+            if (client.isLoggedIn()) {
                 showMenu();
             }
         }
     }
 
-    private void authorization(){
+    private void authorization() {
         System.out.println("Войдите в аккаунт");
         System.out.print("Логин: ");
         String login = sc.nextLine();
         System.out.print("Пароль: ");
         String password = sc.nextLine();
 
-        if (client.LoggedIn(login, password)){
+        if (client.LoggedIn(login, password)) {
             System.out.println("Совершён успешный вход в систему\nДобро пожаловать, " + client.getLogin());
-        }else {
+        } else {
             System.out.println("Ошибка: Неправильный логин или пароль! Повторите попытку!");
         }
     }
 
-    private void showMenu(){
-        while (!client.isLogout()){
+    private void showMenu() {
+        while (!client.isLogout()) {
             System.out.println("Меню магазина");
             System.out.println("1. Просмотр каталогов товаров");
             System.out.println("2. Просмотр корзины");
@@ -64,7 +64,7 @@ public class Shop {
 
             String choice = sc.nextLine();
 
-            switch (choice){
+            switch (choice) {
                 case "1":
                     showCatalogsProducts();
                     break;
@@ -85,54 +85,54 @@ public class Shop {
         }
     }
 
-    private void showCatalogsProducts(){
-        while(true){
+    private void showCatalogsProducts() {
+        while (true) {
             System.out.println("КАТАЛОГИ ТОВАРОВ");
             CatalogProducts[] catalogs = CatalogProducts.values();
-            for (int i = 0; i < catalogs.length; i++){
-                System.out.println((i+1) + ". " + catalogs[i].getCatalogName());
+            for (int i = 0; i < catalogs.length; i++) {
+                System.out.println((i + 1) + ". " + catalogs[i].getCatalogName());
             }
-            System.out.println((catalogs.length + 1)+". Выйти в главное меню");
+            System.out.println((catalogs.length + 1) + ". Выйти в главное меню");
             System.out.print("Выберите категорию: ");
 
             int choice = getIntInput();
-            if (choice >= 1 && choice <= catalogs.length){
-                showProductsInCatalog(catalogs[choice-1]);
+            if (choice >= 1 && choice <= catalogs.length) {
+                showProductsInCatalog(catalogs[choice - 1]);
             } else if (choice == catalogs.length + 1) {
                 return;
-            } else{
+            } else {
                 System.out.println("Неверный выбор! Повторите попытку");
             }
         }
     }
 
-    private void showProductsInCatalog(CatalogProducts catalog){
-        int count = 0;
-        for (Product product : products){
-            if (product.getCatalog() == catalog && product.getAmount() > 0){
-                count++;
+    private void showProductsInCatalog(CatalogProducts catalog) {
+        while (true) {
+            int count = 0;
+            for (Product product : products) {
+                if (product.getCatalog() == catalog && product.getAmount() > 0) {
+                    count++;
+                }
             }
-        }
 
-        if (count == 0){
-            System.out.println("В этой категории нет товаров.");
-            return;
-        }
-
-        Product[] catalogProducts = new Product[count];
-        int index = 0;
-        for (Product product : products){
-            if(product.getCatalog() == catalog && product.getAmount() > 0){
-                catalogProducts[index] = product;
-                index++;
+            if (count == 0) {
+                System.out.println("В этой категории нет товаров.");
+                return;
             }
-        }
 
-        while (true){
+            Product[] catalogProducts = new Product[count];
+            int index = 0;
+            for (Product product : products) {
+                if (product.getCatalog() == catalog && product.getAmount() > 0) {
+                    catalogProducts[index] = product;
+                    index++;
+                }
+            }
+
             System.out.println(catalog.getCatalogName().toUpperCase());
 
-            for (int i = 0; i < catalogProducts.length; i++){
-                System.out.println((i+1) + ". " + catalogProducts[i]);
+            for (int i = 0; i < catalogProducts.length; i++) {
+                System.out.println((i + 1) + ". " + catalogProducts[i]);
             }
             System.out.println((catalogProducts.length + 1) + ". Вернуться к катеориям");
             System.out.print("Выберите пункт: ");
@@ -148,8 +148,9 @@ public class Shop {
             }
         }
     }
-    private void addToCart(Product product){
-        while (true){
+
+    private void addToCart(Product product) {
+        while (true) {
             System.out.println("\nВыбран товар: " + product.getName());
             System.out.println("Цена: " + product.getPrice() + " руб.");
             System.out.println("В наличии: " + product.getAmount() + " шт.");
@@ -157,17 +158,18 @@ public class Shop {
 
             int quantity = getIntInput();
 
-            if (quantity >= 0 && product.getAmount() >= quantity){
+            if (quantity >= 0 && product.getAmount() >= quantity) {
                 cart.addProduct(product, quantity);
+                product.setAmount(product.getAmount() - quantity);
                 return;
-            }else{
+            } else {
                 System.out.println("Неверное количество. Повторите попытку!");
             }
         }
     }
 
-    private void purchaseProducts(){
-        if (cart.isEmpty()){
+    private void purchaseProducts() {
+        if (cart.isEmpty()) {
             System.out.println("Корзина пуста!");
             return;
         }
@@ -175,34 +177,29 @@ public class Shop {
         System.out.print("Подтвердить покупку? (1 - Да, 2 - Нет): ");
 
         String input = sc.nextLine();
-        if (input.equals("1")){
-            for (int i = 0; i < cart.getProductsCount(); i++){
-                Product product = cart.getProduct(i);
-                int quantity = cart.getQuantity(i);
-                product.setAmount(product.getAmount()-quantity);
-            }
+        if (input.equals("1")) {
             System.out.println("Покупка завершена успешно!");
             double total = calculateTotal();
             System.out.println("Сумма покупки: " + total + "руб.");
             cart.clear();
-        }else{
+        } else {
             System.out.println("Покупка отменена.");
         }
     }
 
-    private double calculateTotal(){
+    private double calculateTotal() {
         double total = 0;
-        for (int i = 0; i < cart.getProductsCount(); i++){
+        for (int i = 0; i < cart.getProductsCount(); i++) {
             Product product = cart.getProduct(i);
             total += product.getPrice() * cart.getQuantity(i);
         }
         return total;
     }
 
-    private int getIntInput(){
-        while(true){
+    private int getIntInput() {
+        while (true) {
             String input = sc.nextLine();
-            try{
+            try {
                 return Integer.parseInt(input);
             } catch (NumberFormatException e) {
                 System.out.print("Неправильное число! Повторите попытку: ");
@@ -210,7 +207,13 @@ public class Shop {
         }
     }
 
-    public static void main(String[] args){
+    private void clearConsole(){
+        for (int i = 0; i < 50; i++){
+        System.out.println();
+        }
+    }
+
+    public static void main(String[] args) {
         Shop shop = new Shop();
         shop.start();
     }

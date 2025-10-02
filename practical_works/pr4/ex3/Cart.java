@@ -66,4 +66,5 @@ public class Cart {
     public int getQuantity(int index) {
         return quantities[index];
     }
+
 }
