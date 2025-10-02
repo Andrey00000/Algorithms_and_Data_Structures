@@ -41,7 +41,7 @@ public class Cart {
         for(int i = 0; i < productsCount; i++){
             double productPrice = products[i].getPrice();
             double productTotalPrice = productPrice * quantities[i];
-            System.out.printf("%d) %s Цена: %.2f x %d = %.2f руб.", i+1, products[i].getName(), productPrice, quantities[i], productTotalPrice);
+            System.out.printf("%d) %s Цена: %.2f x %d = %.2f руб.%n", i+1, products[i].getName(), productPrice, quantities[i], productTotalPrice);
             totalPrice += productTotalPrice;
         }
         System.out.println("Итого: " + totalPrice + "руб.");
