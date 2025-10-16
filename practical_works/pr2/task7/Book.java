@@ -3,7 +3,7 @@ package pr2.task7;
 public class Book {
     private String author;
     private String name_book;
-    public int realise_year;
+    private int realise_year;
     private String genre;
 
     public Book(String author, String name_book, int realise_year, String genre){

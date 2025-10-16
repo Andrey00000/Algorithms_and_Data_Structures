@@ -24,23 +24,22 @@ public class BookTest {
         System.out.println("=== ИСХОДНЫЙ СПИСОК КНИГ ===");
         printBooks(shelf.getBooks(), shelf.getCount());
 
-        // Тестируем сортировку по году
+
         System.out.println("\n=== СОРТИРОВКА ПО ГОДУ ИЗДАНИЯ ===");
         shelf.sortYear(shelf.getBooks());
         printBooks(shelf.getBooks(), shelf.getCount());
 
-        // Тестируем поиск самой старой книги
         System.out.println("\n=== САМАЯ СТАРАЯ КНИГА ===");
         Book oldest = shelf.oldest_book();
         System.out.println(oldest);
 
-        // Тестируем поиск самой новой книги
+
         System.out.println("\n=== САМАЯ НОВАЯ КНИГА ===");
         Book youngest = shelf.yougest_book();
         System.out.println(youngest);
     }
 
-    // Вспомогательный метод для вывода списка книг
+
     private static void printBooks(Book[] books, int count) {
         if (count == 0) {
             System.out.println("На полке нет книг");

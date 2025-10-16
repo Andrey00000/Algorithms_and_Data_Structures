@@ -1,4 +1,4 @@
-package pr3.exercise1;
+package pr3.task4;
 import java.util.Random;
 
 public class Main{
@@ -13,7 +13,7 @@ public class Main{
             System.out.print(array[i] + " ");
         }
 
-        //System.out.println();
+        System.out.println();
 
         boolean isIncreasing = true;
 

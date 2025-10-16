@@ -22,7 +22,7 @@ public class Shelf {
     public void sortYear(Book[] books) {
         for (int i = 0; i < count - 1; i++) {
             for (int j = 0; j < count - i - 1; j++) {
-                if (books[j].realise_year > books[j + 1].realise_year){
+                if (books[j].getRealise_year() > books[j + 1].getRealise_year()){
                     Book temp = books[j];
                     books[j] = books[j + 1];
                     books[j + 1] = temp;
@@ -35,7 +35,7 @@ public class Shelf {
         if (count == 0) return null;
         Book oldest = books[0];
         for (int i = 1; i < count; i++) {
-            if (books[i].realise_year > oldest.realise_year) {
+            if (books[i].getRealise_year() > oldest.getRealise_year()) {
                 oldest = books[i];
             }
         }
@@ -46,7 +46,7 @@ public class Shelf {
         if (count == 0) return null;
         Book youngest = books[0];
         for (int i = 1; i < count; i++) {
-            if (books[i].realise_year < youngest.realise_year) {
+            if (books[i].getRealise_year() < youngest.getRealise_year()) {
                 youngest = books[i];
             }
         }
