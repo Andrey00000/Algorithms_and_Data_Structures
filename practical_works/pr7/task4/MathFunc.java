@@ -10,7 +10,7 @@ public class MathFunc implements MathCalculable{
     @Override
     public ComplexNumber pow(ComplexNumber base, int exponent) {
         if (exponent == 0) {
-            return new ComplexNumber(1, 0); // любое число в степени 0 = 1
+            return new ComplexNumber(1, 0);
         }
 
         double modulus = absComplex(base);
@@ -29,7 +29,7 @@ public class MathFunc implements MathCalculable{
     }
 
     public double circleLength(double radius) {
-        return 2 * PI * radius; // используем PI из интерфейса
+        return 2 * PI * radius;
     }
 
 }

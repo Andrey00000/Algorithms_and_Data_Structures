@@ -27,7 +27,7 @@ public class FirstGui {
         JButton button2 = new JButton("Real Madrid");
         JLabel result = new JLabel("Result: "+ count[0] +"X "+ count[1]);
         JLabel last_scorer = new JLabel("Last Scorer: N/A");
-        JLabel winner = new JLabel("Winner: DRAW");
+        JLabel winner = new JLabel("Winner: N/A");
         timeLabel = new JLabel("Осталось: " + time, JLabel.CENTER);
 
         Runnable updateWinner = () -> {
@@ -35,6 +35,9 @@ public class FirstGui {
                 winner_team = "AC Milan";
             } else if (count[0]<count[1]) {
                 winner_team = "Real Madrid";
+            }
+            else{
+                winner_team = "Draw";
             }
             winner.setText("Winner: " + winner_team);
         };
