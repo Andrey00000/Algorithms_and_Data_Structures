@@ -1,4 +1,4 @@
-package pr6.task2;
+package pr7.task2;
 
 public class MovablePoint implements Movable{
 
@@ -37,21 +37,5 @@ public class MovablePoint implements Movable{
     @Override
     public String toString(){
         return String.format("Точка в координатах (%d, %d) со скоростями (%d, %d).", x, y, xSpeed, ySpeed);
-    }
-
-    public int getYSpeed() {
-        return ySpeed;
-    }
-
-    public int getXSpeed() {
-        return xSpeed;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public int getX() {
-        return x;
     }
 }

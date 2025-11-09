@@ -1,4 +1,4 @@
-package pr6.task2;
+package pr7.task2;
 
 public class MovableRectangle implements Movable{
     private MovablePoint topLeft;
