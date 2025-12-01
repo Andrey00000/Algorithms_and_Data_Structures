@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Animation {
-    private static ImageIcon[] frames; // ⭐ Теперь массив вместо ArrayList
+    private static ImageIcon[] frames;
     private static int currentFrame = 0;
     private static Timer animationTimer;
     private static JLabel animationLabel;

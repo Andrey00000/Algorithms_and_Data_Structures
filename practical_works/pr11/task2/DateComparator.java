@@ -8,7 +8,6 @@ public class DateComparator {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        // Текущая дата
         Date currentDate = new Date();
         Calendar calendar = Calendar.getInstance();
 
@@ -57,14 +56,6 @@ public class DateComparator {
         boolean isFuture = diff > 0;
         boolean isPresent = diff == 0;
 
-        // Вычисляем разницу
-        long diffSeconds = Math.abs(diff) / 1000;
-        long diffMinutes = diffSeconds / 60;
-        long diffHours = diffMinutes / 60;
-        long diffDays = diffHours / 24;
-        long diffMonths = diffDays / 30;
-        long diffYears = diffDays / 365;
-
         System.out.println("\nАНАЛИЗ ВРЕМЕННОГО ИНТЕРВАЛА:");
 
         if (isPresent) {
@@ -75,21 +66,5 @@ public class DateComparator {
             System.out.println("Введенная дата в ПРОШЛОМ");
         }
 
-        System.out.println("\n РАЗНИЦА ВО ВРЕМЕНИ:");
-        System.out.printf("Полная разница: %,d миллисекунд\n", Math.abs(diff));
-        System.out.printf("В секундах: %,d сек.\n", diffSeconds);
-        System.out.printf("В минутах: %,d мин.\n", diffMinutes);
-        System.out.printf("В часах: %,d час.\n", diffHours);
-        System.out.printf("В днях: %,d дн.\n", diffDays);
-
-        if (diffMonths > 0) {
-            System.out.printf("• В месяцах: %,d мес.\n", diffMonths);
-        }
-        if (diffYears > 0) {
-            System.out.printf("• В годах: %,d лет\n", diffYears);
-        }
     }
-
-
-
 }

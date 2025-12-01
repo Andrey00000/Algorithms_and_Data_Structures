@@ -31,8 +31,6 @@ public class SortingStudentsByGPA implements Comparator<Student> {
         }
     }
 
-    // 2) РЕАЛИЗАЦИЯ РАЗЛИЧНЫХ КОМПАРАТОРОВ
-
     // Основной компаратор - по GPA по убыванию
     @Override
     public int compare(Student s1, Student s2) {
